@@ -17,7 +17,6 @@ os.system(f"sed -i -e '/(train_interface, \"Train\", \"ti\"),/d' /home/user/app/
 os.system(f"sed -i -e '/extensions_interface, \"Extensions\", \"extensions\"/d' /home/user/app/stable-diffusion-webui/modules/ui.py")
 os.system(f"sed -i -e '/settings_interface, \"Settings\", \"settings\"/d' /home/user/app/stable-diffusion-webui/modules/ui.py")
 os.system(f'''sed -i -e "s/document.getElementsByTagName('gradio-app')\[0\].shadowRoot/document/g" /home/user/app/stable-diffusion-webui/script.js''')
-os.system(f"sed -i -e 's/                show_progress=False,/                show_progress=True,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
 
 # ----------------------------Please duplicate this space and delete this block if you don't want to see the extra header----------------------------
 os.system(f"wget -q https://github.com/camenduru/webui/raw/main/header_patch.py -O /home/user/app/header_patch.py")
@@ -28,6 +27,7 @@ os.system(f"wget -q https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/A
 os.system(f"wget -q https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0.vae.pt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/Anything-V3.0-pruned.vae.pt")
 
 if "IS_SHARED_UI" in os.environ:
+    os.system(f"sed -i -e 's/                show_progress=False,/                show_progress=True,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
     os.system(f"sed -i -e 's/shared.demo.launch/shared.demo.queue().launch/g' /home/user/app/stable-diffusion-webui/webui.py")
     os.system(f"sed -i -e 's/inputs=\[component\],/&\\n                queue=False,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
     os.system(f"wget -q https://github.com/camenduru/webui/raw/main/shared-config.json -O /home/user/app/shared-config.json")
