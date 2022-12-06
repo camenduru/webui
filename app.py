@@ -20,6 +20,7 @@ os.system(f'''sed -i -e "s/document.getElementsByTagName('gradio-app')\[0\].shad
 os.system(f"sed -i -e 's/                show_progress=False,/                show_progress=True,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
 os.system(f"sed -i -e 's/shared.demo.launch/shared.demo.queue().launch/g' /home/user/app/stable-diffusion-webui/webui.py")
 os.system(f"sed -i -e 's/inputs=\[component\],/&\\n                queue=False,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
+os.system(f"sed -i -e 's/outputs=\[token_counter\]/outputs=[token_counter], queue=False/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
 
 # ----------------------------Please duplicate this space and delete this block if you don't want to see the extra header----------------------------
 os.system(f"wget -q https://github.com/camenduru/webui/raw/main/header_patch.py -O /home/user/app/header_patch.py")
