@@ -19,21 +19,25 @@ os.system(f"sed -i -e '/settings_interface, \"Settings\", \"settings\"/d' /home/
 os.system(f'''sed -i -e "s/document.getElementsByTagName('gradio-app')\[0\].shadowRoot/!!document.getElementsByTagName('gradio-app')[0].shadowRoot ? document.getElementsByTagName('gradio-app')[0].shadowRoot : document/g" /home/user/app/stable-diffusion-webui/script.js''')
 os.system(f"sed -i -e 's/                show_progress=False,/                show_progress=True,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
 os.system(f"sed -i -e 's/shared.demo.launch/shared.demo.queue().launch/g' /home/user/app/stable-diffusion-webui/webui.py")
-os.system(f"sed -i -e 's/inputs=\[component\],/&\\n                queue=False,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
-os.system(f"sed -i -e 's/outputs=\[token_counter\]/outputs=[token_counter], queue=False/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
+#os.system(f"sed -i -e 's/inputs=\[component\],/&\\n                queue=False,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
+#os.system(f"sed -i -e 's/outputs=\[token_counter\]/outputs=[token_counter], queue=False/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
+os.system(f"sed -i -e 's/outputs=\[/queue=False, &/g' home/user/app/stable-diffusion-webui/modules/ui.py")
 
 # ----------------------------Please duplicate this space and delete this block if you don't want to see the extra header----------------------------
 os.system(f"wget -q https://github.com/camenduru/webui/raw/main/header_patch.py -O /home/user/app/header_patch.py")
 os.system(f"sed -i -e '/demo:/r /home/user/app/header_patch.py' /home/user/app/stable-diffusion-webui/modules/ui.py")
 # ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-os.system(f"wget -q https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0-pruned.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/Anything-V3.0-pruned.ckpt")
-os.system(f"wget -q https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0.vae.pt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/Anything-V3.0-pruned.vae.pt")
-
 if "IS_SHARED_UI" in os.environ:
     os.system(f"wget -q https://github.com/camenduru/webui/raw/main/shared-config.json -O /home/user/app/shared-config.json")
     os.system(f"wget -q https://github.com/camenduru/webui/raw/main/shared-ui-config.json -O /home/user/app/shared-ui-config.json")
     os.system(f"python launch.py --force-enable-xformers --disable-console-progressbars --enable-console-prompts --ui-config-file /home/user/app/shared-ui-config.json --ui-settings-file /home/user/app/shared-config.json --cors-allow-origins huggingface.co,hf.space --no-progressbar-hiding")
+    
+    #os.system(f"wget -q https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0-pruned.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/Anything-V3.0-pruned.ckpt")
+    #os.system(f"wget -q https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0.vae.pt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/Anything-V3.0-pruned.vae.pt")
+    
+    os.system(f"wget -q https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/v2-1_768-ema-pruned.ckpt")
+    os.system(f"wget -q https://raw.githubusercontent.com/Stability-AI/stablediffusion/main/configs/stable-diffusion/v2-inference-v.yaml -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/v2-1_768-ema-pruned.yaml")
 else:
     # Please duplicate this space and delete # character in front of the custom script you want to use or add here more custom scripts with same structure os.system(f"wget -q https://CUSTOM_SCRIPT_URL -O /home/user/app/stable-diffusion-webui/scripts/CUSTOM_SCRIPT_NAME.py")
     os.system(f"wget -q https://gist.github.com/camenduru/9ec5f8141db9902e375967e93250860f/raw/d0bcf01786f20107c329c03f8968584ee67be12a/run_n_times.py -O /home/user/app/stable-diffusion-webui/scripts/run_n_times.py")
@@ -54,6 +58,15 @@ else:
     #os.system(f"wget -q https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/sd-v1-4.ckpt")
     #os.system(f"wget -q https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/v1-5-pruned-emaonly.ckpt")
     #os.system(f"wget -q https://huggingface.co/runwayml/stable-diffusion-inpainting/resolve/main/sd-v1-5-inpainting.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/sd-v1-5-inpainting.ckpt")
+    
+    #os.system(f"wget -q https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0-pruned.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/Anything-V3.0-pruned.ckpt")
+    #os.system(f"wget -q https://huggingface.co/Linaqruf/anything-v3.0/resolve/main/Anything-V3.0.vae.pt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/Anything-V3.0-pruned.vae.pt")
+    
     #os.system(f"wget -q https://huggingface.co/stabilityai/stable-diffusion-2/resolve/main/768-v-ema.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/768-v-ema.ckpt")
     #os.system(f"wget -q https://raw.githubusercontent.com/Stability-AI/stablediffusion/main/configs/stable-diffusion/v2-inference-v.yaml -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/768-v-ema.yaml")
-    os.system(f"python launch.py --force-enable-xformers --disable-console-progressbars --enable-console-prompts --cors-allow-origins huggingface.co,hf.space --no-progressbar-hiding --api --skip-torch-cuda-test")
+    
+    os.system(f"wget -q https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/v2-1_768-ema-pruned.ckpt")
+    os.system(f"wget -q https://raw.githubusercontent.com/Stability-AI/stablediffusion/main/configs/stable-diffusion/v2-inference-v.yaml -O /home/user/app/stable-diffusion-webui/models/Stable-diffusion/v2-1_768-ema-pruned.yaml")
+
+    os.system(f"python launch.py --force-enable-xformers --ui-config-file /home/user/app/ui-config.json --ui-settings-file /home/user/app/config.json --disable-console-progressbars --enable-console-prompts --cors-allow-origins huggingface.co,hf.space --no-progressbar-hiding --api --skip-torch-cuda-test")
+    
