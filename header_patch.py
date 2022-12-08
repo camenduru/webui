@@ -2,7 +2,7 @@
             if(is_spaces and is_shared_ui):
                 gr.HTML(f'''
                 <div class="gr-prose" style="max-width: 80%">
-                    <h2>Automatic1111 Stable Diffusion WebUI on Hugging Face Spaces 🎨 Running model: Linaqruf/anything-v3.0</h2>
+                    <h2>Automatic1111 Stable Diffusion WebUI on Hugging Face Spaces 🎨 Running model: stabilityai/stable-diffusion-2-1</h2>
                     <p>You can duplicate this Space to run it privately without a queue and load additional checkpoints.&nbsp;&nbsp;<a class="duplicate-button" style="display:inline-block" target="_blank" href="https://huggingface.co/spaces/{os.environ['SPACE_ID']}?duplicate=true"><img style="margin: 0" src="https://img.shields.io/badge/-Duplicate%20Space-blue?labelColor=white&style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAP5JREFUOE+lk7FqAkEURY+ltunEgFXS2sZGIbXfEPdLlnxJyDdYB62sbbUKpLbVNhyYFzbrrA74YJlh9r079973psed0cvUD4A+4HoCjsA85X0Dfn/RBLBgBDxnQPfAEJgBY+A9gALA4tcbamSzS4xq4FOQAJgCDwV2CPKV8tZAJcAjMMkUe1vX+U+SMhfAJEHasQIWmXNN3abzDwHUrgcRGmYcgKe0bxrblHEB4E/pndMazNpSZGcsZdBlYJcEL9Afo75molJyM2FxmPgmgPqlWNLGfwZGG6UiyEvLzHYDmoPkDDiNm9JR9uboiONcBXrpY1qmgs21x1QwyZcpvxt9NS09PlsPAAAAAElFTkSuQmCC&logoWidth=14" alt="Duplicate Space"></a></p> 
                 </div>
                 ''')
