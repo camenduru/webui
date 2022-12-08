@@ -23,7 +23,6 @@ os.system(f"sed -i -e 's/shared.demo.launch/shared.demo.queue().launch/g' /home/
 #os.system(f"sed -i -e 's/outputs=\[token_counter\]/outputs=[token_counter], queue=False/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
 os.system(f"sed -i -e 's/ outputs=\[/queue=False, &/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
 os.system(f"sed -i -e 's/               queue=False,  /                /g' /home/user/app/stable-diffusion-webui/modules/ui.py")
-os.system(f"sed -i -e 's/                show_progress=True,/&\\n                queue=True,/g' /home/user/app/stable-diffusion-webui/modules/ui.py")
 
 # ----------------------------Please duplicate this space and delete this block if you don't want to see the extra header----------------------------
 os.system(f"wget -q https://github.com/camenduru/webui/raw/main/header_patch.py -O /home/user/app/header_patch.py")
@@ -31,6 +30,8 @@ os.system(f"sed -i -e '/demo:/r /home/user/app/header_patch.py' /home/user/app/s
 # ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 if "IS_SHARED_UI" in os.environ:
+    os.system(f"rm -rfv /home/user/app/stable-diffusion-webui/scripts/")
+    
     os.system(f"wget -q https://github.com/camenduru/webui/raw/main/shared-config.json -O /home/user/app/shared-config.json")
     os.system(f"wget -q https://github.com/camenduru/webui/raw/main/shared-ui-config.json -O /home/user/app/shared-ui-config.json")
     
