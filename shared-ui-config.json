@@ -310,7 +310,7 @@
     "extras/Resize/visible": true,
     "extras/Resize/value": 4,
     "extras/Resize/minimum": 1.0,
-    "extras/Resize/maximum": 8.0,
+    "extras/Resize/maximum": 4.0,
     "extras/Resize/step": 0.05,
     "extras/Width/visible": true,
     "extras/Width/value": 512,

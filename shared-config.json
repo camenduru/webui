@@ -108,7 +108,7 @@
     "s_noise": 1.0,
     "eta_noise_seed_delta": 0,
     "disabled_extensions": [],
-    "ldsr_steps": 100,
+    "ldsr_steps": 1,
     "SWIN_tile": 192,
     "SWIN_tile_overlap": 8
 }
